@@ -1,6 +1,4 @@
-import { fmtRange } from '../lib/format'
-
-export default function Hero({ trip, updateTrip, daysCount, nights }) {
+export default function Hero({ trip, updateTrip, daysCount, nights, rangeText }) {
   const changePhoto = () => {
     const url = window.prompt('Pegá la URL de la foto de portada:', trip.hero_photo || '')
     if (url !== null) updateTrip({ hero_photo: url.trim() })
@@ -39,7 +37,7 @@ export default function Hero({ trip, updateTrip, daysCount, nights }) {
         />
 
         <div className="mt-5 flex flex-wrap gap-2.5 text-sm">
-          <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur ring-1 ring-white/25 rounded-full px-4 py-2 font-semibold">📅 {fmtRange(trip.start_date, trip.end_date)}</span>
+          <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur ring-1 ring-white/25 rounded-full px-4 py-2 font-semibold">📅 {rangeText}</span>
           <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur ring-1 ring-white/25 rounded-full px-4 py-2 font-semibold">🗓️ {daysCount} días / {nights} noches</span>
           {trip.vehicle && (
             <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur ring-1 ring-white/25 rounded-full px-4 py-2 font-semibold">🚙 {trip.vehicle}</span>

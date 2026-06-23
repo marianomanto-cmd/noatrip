@@ -56,3 +56,11 @@ textarea.inp { resize:vertical; min-height:2.2rem; line-height:1.5; }
 .thin-scroll { scrollbar-width: thin; }
 .thin-scroll::-webkit-scrollbar { height:6px; }
 .thin-scroll::-webkit-scrollbar-thumb { background:#d6cdbf; border-radius:9999px; }
+
+/* marcadores numerados del mapa */
+.route-marker { width:26px; height:26px; border-radius:9999px; background:#b4532a; color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;
+  border:2px solid #fff; box-shadow:0 1px 5px rgba(0,0,0,.45); cursor:pointer;
+  font-family:'Inter', sans-serif; }
+.maplibregl-popup-content { font-family:'Inter', sans-serif; font-size:13px; font-weight:600;
+  border-radius:8px; padding:6px 10px; }
