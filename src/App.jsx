@@ -6,6 +6,7 @@ import { StickyBar, SummarySection } from './components/Summary'
 import DayCard from './components/DayCard'
 import NotesSection from './components/NotesSection'
 import RouteMap from './components/RouteMap'
+import TripTimeline from './components/TripTimeline'
 import { sumCosts, activeOption, rangeLabel } from './lib/format'
 import { resolvePlace } from './lib/places'
 
@@ -55,6 +56,14 @@ export default function App() {
       <IconSprite />
       <StickyBar trip={trip} totals={totals} status={status} saving={saving} />
       <Hero trip={trip} updateTrip={updateTrip} daysCount={totals.days} nights={totals.nights} rangeText={rangeLabel(trip.start_date, totals.days)} />
+
+      {/* Cronograma tipo Gantt (solo desktop) */}
+      <section className="hidden md:block max-w-5xl mx-auto px-5 pt-8">
+        <p className="daylabel"><Icon name="clock" /> Cronograma</p>
+        <h2 className="font-display text-3xl text-stone-900 mt-2 mb-3">El viaje de principio a fin</h2>
+        <TripTimeline days={days} startDate={trip.start_date} />
+      </section>
+
       <SummarySection trip={trip} updateTrip={updateTrip} totals={totals} />
 
       {/* Mapa */}
@@ -72,7 +81,7 @@ export default function App() {
 
         <div className="mt-4 flex gap-2 overflow-x-auto thin-scroll pb-1">
           {days.map((d, i) => (
-            <a key={d.id} href={`#dia-${i + 1}`} className="flex-none px-3 py-1.5 rounded-full bg-white ring-1 ring-stone-200 text-sm hover:bg-stone-100">D{i + 1}</a>
+            <a key={d.id} href={`#dia-${i + 1}`} className="flex-none px-4 py-2.5 rounded-full bg-white ring-1 ring-stone-200 text-sm font-medium hover:bg-stone-100">D{i + 1}</a>
           ))}
         </div>
 

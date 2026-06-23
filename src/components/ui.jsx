@@ -17,6 +17,9 @@ export function IconSprite() {
       <symbol id="ic-plus" viewBox="0 0 24 24" {...s}><path d="M12 5v14M5 12h14" /></symbol>
       <symbol id="ic-trash" viewBox="0 0 24 24" {...s}><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13" /></symbol>
       <symbol id="ic-share" viewBox="0 0 24 24" {...s}><circle cx="6" cy="12" r="2.2" /><circle cx="17" cy="6" r="2.2" /><circle cx="17" cy="18" r="2.2" /><path d="M8 11l7-4M8 13l7 4" /></symbol>
+      <symbol id="ic-chevron-up" viewBox="0 0 24 24" {...s}><path d="M6 15l6-6 6 6" /></symbol>
+      <symbol id="ic-chevron-down" viewBox="0 0 24 24" {...s}><path d="M6 9l6 6 6-6" /></symbol>
+      <symbol id="ic-camera" viewBox="0 0 24 24" {...s}><path d="M4 9a2 2 0 0 1 2-2h1.5l1.2-1.6a1 1 0 0 1 .8-.4h5a1 1 0 0 1 .8.4L17.5 7H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" /><circle cx="12" cy="13" r="3.2" /></symbol>
     </svg>
   )
 }

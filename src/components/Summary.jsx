@@ -24,9 +24,9 @@ export function StickyBar({ trip, totals, status, saving }) {
       <div className="max-w-3xl mx-auto px-3">
         <div className="flex items-center gap-3 py-2.5 overflow-x-auto thin-scroll">
           <span className="flex-none font-display font-700 text-stone-900 text-lg pr-1">🏔️ NOA</span>
-          <span className="flex-none chip">{totals.days} días · {totals.nights} noches</span>
-          <span className="flex-none chip"><Icon name="pin" /> {totals.km.toLocaleString('es-AR')} km</span>
-          <span className="flex-none chip alt"><Icon name="wallet" /> {money(totals.total, trip.currency)}</span>
+          <span className="flex-none chip tabular-nums">{totals.days} días · {totals.nights} noches</span>
+          <span className="flex-none chip tabular-nums"><Icon name="pin" /> {totals.km.toLocaleString('es-AR')} km</span>
+          <span className="flex-none chip alt tabular-nums"><Icon name="wallet" /> {money(totals.total, trip.currency)}</span>
           <span className="flex-1" />
           <span className="flex-none"><StatusPill status={status} saving={saving} /></span>
           <button onClick={share} className="flex-none chip hover:bg-stone-200" title="Copiar link para compartir">
@@ -41,7 +41,7 @@ export function StickyBar({ trip, totals, status, saving }) {
 function Stat({ big, label, accent }) {
   return (
     <div className="bg-white rounded-xl ring-1 ring-stone-200 p-4">
-      <p className={`font-display text-3xl ${accent ? 'text-clay' : 'text-stone-900'}`}>{big}</p>
+      <p className={`font-display text-3xl tabular-nums ${accent ? 'text-clay' : 'text-stone-900'}`}>{big}</p>
       <p className="text-xs text-stone-500 mt-1 font-semibold uppercase tracking-wide">{label}</p>
     </div>
   )

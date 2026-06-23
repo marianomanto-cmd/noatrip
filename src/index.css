@@ -64,3 +64,23 @@ textarea.inp { resize:vertical; min-height:2.2rem; line-height:1.5; }
   font-family:'Inter', sans-serif; }
 .maplibregl-popup-content { font-family:'Inter', sans-serif; font-size:13px; font-weight:600;
   border-radius:8px; padding:6px 10px; }
+
+/* etapa del cronograma (Gantt desktop) */
+.gantt-bar { display:flex; flex-direction:column; justify-content:center; min-height:46px; padding:.4rem .6rem;
+  border-radius:.6rem; color:#fff; text-align:left; cursor:pointer; overflow:hidden; line-height:1.15;
+  transition:transform .15s ease, box-shadow .15s ease; box-shadow:0 1px 2px rgba(0,0,0,.12); }
+.gantt-bar:hover { transform:translateY(-1px); box-shadow:0 4px 10px rgba(0,0,0,.18); }
+
+/* mobile: evitar auto-zoom de iOS y targets mas comodos */
+@media (max-width: 767px) {
+  .inp { font-size: 16px !important; }
+  textarea { font-size: 16px !important; }
+  .mini { padding: .5rem .85rem; }
+  .xbtn { padding: .45rem .6rem; font-size: 1rem; }
+}
+
+/* respeta la preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

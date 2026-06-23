@@ -23,6 +23,14 @@ export function fmtDayBadge(startDate, index) {
   return `${WEEKDAYS[d.getDay()]} ${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`
 }
 
+// Tick corto para el cronograma: "Vie 3".
+export function fmtTick(startDate, index) {
+  const d = addDays(startDate, index)
+  if (!d) return ''
+  const wd = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'][d.getDay()]
+  return `${wd} ${d.getDate()}`
+}
+
 // Rango del viaje a partir del inicio + cantidad de días.
 export function rangeLabel(startDate, count) {
   const s = parse(startDate)

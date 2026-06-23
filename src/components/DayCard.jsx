@@ -21,7 +21,7 @@ export default function DayCard({ day, index, startDate, isFirst, isLast, update
   const changePhoto = () => { const u = window.prompt('URL de la foto:', data.photo_url || ''); if (u !== null) set({ photo_url: u.trim() }) }
   const onDelete = () => { if (window.confirm(`¿Eliminar el Día ${index + 1}?`)) removeDay(day.id) }
 
-  const tabCls = (t) => `px-3 py-1.5 rounded-lg text-sm font-bold transition-colors ${view === t ? 'bg-white shadow text-clay' : 'text-stone-500 hover:text-stone-700'}`
+  const tabCls = (t) => `px-4 py-2.5 rounded-lg text-sm font-bold transition-colors ${view === t ? 'bg-white shadow text-clay' : 'text-stone-500 hover:text-stone-700'}`
 
   return (
     <article id={`dia-${index + 1}`} className="scroll-mt-16 bg-white rounded-2xl shadow-sm ring-1 ring-stone-200 overflow-hidden">
@@ -34,10 +34,10 @@ export default function DayCard({ day, index, startDate, isFirst, isLast, update
           <span className="text-stone-300">·</span><span>{fmtDayBadge(startDate, index)}</span>
         </div>
         {/* reordenar */}
-        <div className="absolute top-3 right-3 flex items-center gap-1">
-          <button onClick={() => moveDay(day.id, -1)} disabled={isFirst} title="Subir" className="w-7 h-7 grid place-items-center rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur disabled:opacity-30 disabled:cursor-not-allowed">↑</button>
-          <button onClick={() => moveDay(day.id, 1)} disabled={isLast} title="Bajar" className="w-7 h-7 grid place-items-center rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur disabled:opacity-30 disabled:cursor-not-allowed">↓</button>
-          <button onClick={changePhoto} title="Cambiar foto" className="h-7 px-2 grid place-items-center rounded-full bg-black/40 hover:bg-black/60 text-white text-[11px] backdrop-blur">📷</button>
+        <div className="absolute top-3 right-3 flex items-center gap-1.5">
+          <button onClick={() => moveDay(day.id, -1)} disabled={isFirst} title="Subir el día" aria-label="Subir el día" className="w-10 h-10 md:w-9 md:h-9 grid place-items-center rounded-full bg-black/45 hover:bg-black/65 text-white backdrop-blur disabled:opacity-30 disabled:cursor-not-allowed"><Icon name="chevron-up" className="w-5 h-5" /></button>
+          <button onClick={() => moveDay(day.id, 1)} disabled={isLast} title="Bajar el día" aria-label="Bajar el día" className="w-10 h-10 md:w-9 md:h-9 grid place-items-center rounded-full bg-black/45 hover:bg-black/65 text-white backdrop-blur disabled:opacity-30 disabled:cursor-not-allowed"><Icon name="chevron-down" className="w-5 h-5" /></button>
+          <button onClick={changePhoto} title="Cambiar foto" aria-label="Cambiar foto del día" className="w-10 h-10 md:w-9 md:h-9 grid place-items-center rounded-full bg-black/45 hover:bg-black/65 text-white backdrop-blur"><Icon name="camera" className="w-5 h-5" /></button>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ export default function DayCard({ day, index, startDate, isFirst, isLast, update
               <li key={i} className="flex items-start gap-2">
                 <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-ochre flex-none" />
                 <EditableArea value={a} onChange={(v) => setAct(i, v)} minRows={1} className="flex-1 text-stone-700" placeholder="Actividad…" />
-                <button onClick={() => delAct(i)} className="xbtn mt-1" title="Quitar">✕</button>
+                <button onClick={() => delAct(i)} className="xbtn mt-1" title="Quitar" aria-label="Quitar actividad">✕</button>
               </li>
             ))}
           </ul>
@@ -100,7 +100,7 @@ export default function DayCard({ day, index, startDate, isFirst, isLast, update
         <section className="mt-5 bg-sand rounded-xl p-4">
           <div className="flex items-center justify-between gap-3">
             <p className="daylabel"><Icon name="bed" /> Dónde dormir</p>
-            <span className="price"><EditableNumber value={data.lodging_price} onChange={(v) => set({ lodging_price: v })} /> {currency}</span>
+            <span className="price tabular-nums"><EditableNumber value={data.lodging_price} onChange={(v) => set({ lodging_price: v })} /> {currency}</span>
           </div>
           <EditableText value={data.lodging_name} onChange={(v) => set({ lodging_name: v })} className="mt-2 font-semibold text-stone-800" placeholder="Alojamiento…" />
           <EditableText value={data.lodging_notes} onChange={(v) => set({ lodging_notes: v })} className="mt-1 text-sm text-stone-500" placeholder="Notas del alojamiento (opcional)…" />
@@ -110,18 +110,18 @@ export default function DayCard({ day, index, startDate, isFirst, isLast, update
         <section className="mt-5">
           <div className="flex items-center justify-between">
             <p className="daylabel"><Icon name="wallet" /> Costos del día</p>
-            <span className="text-sm font-bold text-stone-700">Total: {money(dayTotal, currency)}</span>
+            <span className="text-sm font-bold text-stone-700 tabular-nums">Total: {money(dayTotal, currency)}</span>
           </div>
           <div className="mt-2 space-y-1.5">
             <div className="flex items-center gap-2 text-sm">
-              <span className="flex-1 text-stone-500">🛏️ Alojamiento</span>
-              <span className="text-stone-700 font-semibold">{money(data.lodging_price, currency)}</span>
+              <span className="flex-1 text-stone-500 inline-flex items-center gap-1.5"><Icon name="bed" className="w-4 h-4 opacity-70" /> Alojamiento</span>
+              <span className="text-stone-700 font-semibold tabular-nums">{money(data.lodging_price, currency)}</span>
             </div>
             {costs.map((c, i) => (
               <div key={i} className="flex items-center gap-2">
                 <input value={c.label ?? ''} onChange={(e) => setCost(i, 'label', e.target.value)} placeholder="Concepto" className="inp flex-1" />
                 <EditableNumber value={c.amount} onChange={(v) => setCost(i, 'amount', v)} />
-                <button onClick={() => delCost(i)} className="xbtn" title="Quitar">✕</button>
+                <button onClick={() => delCost(i)} className="xbtn" title="Quitar" aria-label="Quitar costo">✕</button>
               </div>
             ))}
           </div>
