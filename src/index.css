@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --color-clay: #b4532a;
+  --color-clay-dark: #8f3f1f;
+  --color-ochre: #c98a2b;
+  --color-sand: #f6f1e9;
+}
+
+html { scroll-behavior: smooth; }
+body { background: #f6f1e9; color: #292524; -webkit-font-smoothing: antialiased; }
+::selection { background: #b4532a; color: #fff; }
+
+/* ===== Chips de ruta ===== */
+.chip { display:inline-flex; align-items:center; gap:.4rem; background:#f1ece3; color:#57534e;
+  border:1px solid #e7e0d5; padding:.32rem .72rem; border-radius:9999px; font-weight:500; font-size:.82rem; line-height:1.1; }
+.chip svg { width:1rem; height:1rem; opacity:.75; flex:none; }
+.chip.alt { background:rgba(201,138,43,.12); border-color:rgba(201,138,43,.3); color:#8a5e16; }
+
+/* ===== Etiqueta de seccion ===== */
+.daylabel { display:flex; align-items:center; gap:.5rem; font-size:.72rem; letter-spacing:.09em;
+  text-transform:uppercase; font-weight:700; color:#b4532a; }
+.daylabel svg { width:1.05rem; height:1.05rem; flex:none; }
+
+/* ===== Lista de actividades ===== */
+.bullet { position:relative; padding-left:1.1rem; }
+.bullet::before { content:""; position:absolute; left:0; top:.62em; width:.4rem; height:.4rem;
+  border-radius:9999px; background:#c98a2b; }
+
+/* ===== Precio ===== */
+.price { display:inline-flex; align-items:center; gap:.3rem; background:rgba(180,83,42,.1);
+  color:#8f3f1f; font-weight:700; padding:.2rem .65rem; border-radius:9999px; font-size:.85rem; white-space:nowrap; }
+
+/* ===== Inputs editables inline ===== */
+.inp { width:100%; background:transparent; border:1px solid transparent; border-radius:.5rem;
+  padding:.2rem .45rem; margin-left:-.45rem; color:inherit; font:inherit; transition:border-color .12s, background .12s; }
+.inp::placeholder { color:#a8a29e; font-style:italic; }
+.inp:hover { border-color:#e7e0d5; background:#faf7f1; }
+.inp:focus { outline:none; border-color:#c98a2b; background:#fff; box-shadow:0 0 0 3px rgba(201,138,43,.16); }
+textarea.inp { resize:vertical; min-height:2.2rem; line-height:1.5; }
+
+/* input numerico compacto (precios) */
+.inp-num { width:5.5rem; text-align:right; }
+
+/* botoncito + / x */
+.mini { display:inline-flex; align-items:center; justify-content:center; gap:.3rem; border-radius:9999px;
+  font-size:.78rem; font-weight:600; padding:.25rem .6rem; border:1px dashed #d6cdbf; color:#8f3f1f;
+  background:transparent; cursor:pointer; transition:background .12s, border-color .12s; }
+.mini:hover { background:rgba(180,83,42,.08); border-color:#b4532a; }
+.xbtn { color:#b0a99e; cursor:pointer; line-height:1; padding:.1rem .25rem; border-radius:.4rem; }
+.xbtn:hover { color:#b4532a; background:rgba(180,83,42,.08); }
+
+/* scrollbar fino para el indice */
+.thin-scroll { scrollbar-width: thin; }
+.thin-scroll::-webkit-scrollbar { height:6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background:#d6cdbf; border-radius:9999px; }
